@@ -1,6 +1,8 @@
 import { Download, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ContentCardProps {
+  id: string;
   title: string;
   image: string;
   category: string;
@@ -9,10 +11,11 @@ interface ContentCardProps {
   delay?: number;
 }
 
-export default function ContentCard({ title, image, category, episodes, year, delay = 0 }: ContentCardProps) {
+export default function ContentCard({ id, title, image, category, episodes, year, delay = 0 }: ContentCardProps) {
   return (
-    <div
-      className="group relative rounded-xl overflow-hidden bg-card card-hover gradient-border animate-slide-up"
+    <Link
+      to={`/watch/${id}`}
+      className="group relative rounded-xl overflow-hidden bg-card card-hover gradient-border animate-slide-up block"
       style={{ animationDelay: `${delay}ms` }}
     >
       {/* Image */}
@@ -26,12 +29,12 @@ export default function ContentCard({ title, image, category, episodes, year, de
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-20">
           <div className="flex gap-3">
-            <button className="p-3 rounded-full bg-primary text-primary-foreground hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/30">
+            <span className="p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30">
               <Eye size={18} />
-            </button>
-            <button className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-muted active:scale-95 transition-all shadow-lg">
+            </span>
+            <span className="p-3 rounded-full bg-secondary text-secondary-foreground shadow-lg">
               <Download size={18} />
-            </button>
+            </span>
           </div>
         </div>
       </div>
@@ -45,6 +48,6 @@ export default function ContentCard({ title, image, category, episodes, year, de
           {year && <span>{episodes ? " • " : ""}{year}</span>}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
