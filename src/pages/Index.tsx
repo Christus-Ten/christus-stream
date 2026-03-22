@@ -4,6 +4,7 @@ import MangaSection from "@/components/MangaSection";
 import FilmsSection from "@/components/FilmsSection";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import ChatAssistant from "@/components/ChatAssistant";
 
 const Index = () => {
   return (
@@ -14,6 +15,7 @@ const Index = () => {
       <FilmsSection />
       <Footer />
       <WhatsAppFab />
+      <ChatAssistant />
     </div>
   );
 };
